@@ -1,0 +1,42 @@
+<mat-toolbar
+  color="primary"
+  class="main-header mat-elevation-z4"
+  [class.hidden]="toggleSearch"
+>
+  <mat-toolbar-row style="padding: 0 5px">
+    <div style="padding: 8px 0 0 10px; flex: 1">
+      <div class="mat-title">
+        <a [routerLink]="['/']">Breweries</a>
+      </div>
+      <div class="mat-subheading-2" style="line-height: 0.6rem">
+        Search the Open Brewery DB API.
+      </div>
+    </div>
+
+    <button mat-icon-button (click)="openSearchbar()">
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-toolbar
+  class="search-block mat-elevation-z4"
+  [class.active]="toggleSearch"
+>
+  <mat-toolbar-row style="padding: 0 5px">
+    <button class="search-icon" mat-icon-button disabled>
+      <mat-icon>search</mat-icon>
+    </button>
+    <input
+      class="search-control"
+      type="text"
+      placeholder="Search"
+      [(ngModel)]="searchQuery"
+      (change)="handleSearch(searchbar.value)"
+      #searchbar
+    />
+    <button mat-button mat-icon-button (click)="closeSearchbar()">
+      <mat-icon color="primary">close</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>

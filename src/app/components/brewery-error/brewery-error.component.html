@@ -1,0 +1,10 @@
+<h2>An error has occured.</h2>
+<ng-container [ngSwitch]="error">
+  <p *ngSwitchCase="404">
+    The resource you are looking for could not be found.
+  </p>
+  <p *ngSwitchDefault>
+    There was a problem with the system. Please Contact an adminitrator if you
+    need further assistance.
+  </p>
+</ng-container>

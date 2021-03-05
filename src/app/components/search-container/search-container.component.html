@@ -1,0 +1,28 @@
+<ng-container *ngIf="route.queryParams | async as queryParams">
+  <div style="overflow-x: hidden">
+    <section class="header">
+      <brewery-header
+        [queryParam]="queryParams.query"
+        (onSearchChange)="handleSearch($event)"
+      ></brewery-header>
+    </section>
+    <section class="content">
+      <brewery-error
+        *ngIf="queryParams.error as error"
+        [error]="error"
+      ></brewery-error>
+      <ng-container *ngIf="route.data | async as data">
+        <brewery-search-result
+          *ngIf="data.search as search"
+          [queryParam]="queryParams.query"
+          [results]="search"
+        ></brewery-search-result>
+        <brewery-detail
+          *ngIf="data.detail as detail"
+          [queryParam]="queryParams.query"
+          [detail]="detail"
+        ></brewery-detail>
+      </ng-container>
+    </section>
+  </div>
+</ng-container>

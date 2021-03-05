@@ -1,0 +1,23 @@
+<mat-list>
+  <mat-list-item *ngFor="let result of results">
+    <mat-icon mat-list-avatar>sports_bar</mat-icon>
+    <div mat-line>
+      <a [routerLink]="[result.id]">{{ result.name }}</a>
+    </div>
+    <div mat-line>Brewery Type: {{ result.brewery_type }}</div>
+    <div mat-line *ngIf="result.phone">
+      Phone: <a href="tel: {{ result.phone }}">{{ result.phone | phone }}</a>
+    </div>
+    <div mat-line *ngIf="result.website_url">
+      Website:
+      <a href="{{ result.website_url }}" target="_blank">{{
+        result.website_url
+      }}</a>
+    </div>
+  </mat-list-item>
+  <mat-list-item *ngIf="queryParam && !results.length">
+    <mat-icon mat-list-avatar>error</mat-icon>
+    <div mat-line>0 results</div>
+    <div mat-line>No matches</div>
+  </mat-list-item>
+</mat-list>

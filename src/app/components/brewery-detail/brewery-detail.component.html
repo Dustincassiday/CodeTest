@@ -1,0 +1,23 @@
+<div>
+  <h2>{{ detail.name }}</h2>
+</div>
+<ul>
+  <li><strong>Brewery Type: </strong>{{ detail.brewery_type }}</li>
+  <li *ngIf="detail.phone">
+    <strong> Phone: </strong
+    ><a href="tel: {{ detail.phone }}">{{ detail.phone | phone }}</a>
+  </li>
+  <li><strong>Country: </strong>{{ detail.country }}</li>
+  <li *ngIf="detail.latitude && detail.longitude">
+    <strong>Coordinates: </strong>{{ detail.latitude }}, {{ detail.longitude }}
+  </li>
+
+  <li *ngIf="detail.website_url">
+    <strong>Website: </strong>
+    <a href="{{ detail.website_url }}" target="_blank">{{
+      detail.website_url
+    }}</a>
+  </li>
+  <li><strong>Created: </strong>{{ detail.created_at | date: "longDate" }}</li>
+  <li><strong>Updated: </strong>{{ detail.updated_at | date: "longDate" }}</li>
+</ul>
